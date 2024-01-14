@@ -1,3 +1,5 @@
+// import { Login, User } from "./interface.js";
+import * as UserLogin from './interface.js'
 interface Address {
     street: string;
     city: string;
@@ -5,7 +7,7 @@ interface Address {
     pin: string
 }
 
-class Employee {
+class Employee implements UserLogin.Login {
     #id: number; // # == private
     protected name: string;
     adress: Address
@@ -28,6 +30,10 @@ class Employee {
         this.name = name;
         this.#id = id;
     };
+
+    Login(): UserLogin.User {
+        return {name:"John", id:1, email:""};
+    }
 
     getNameWithAddress(): string {
         return `${this.name} stays at ${this.adress}`;
