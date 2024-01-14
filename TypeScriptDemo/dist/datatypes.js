@@ -36,3 +36,4 @@ swapNumbs[0];
 let department;
 department = "IT";
 department = 10;
+//# sourceMappingURL=datatypes.js.map

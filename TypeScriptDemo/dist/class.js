@@ -65,3 +65,4 @@ let address = john.getNameWithAddress();
 console.log(address);
 // let mike = new Manager(2, "Mike", "Cherise Drive");
 // console.log(mike.getNameWithAddress());
+//# sourceMappingURL=class.js.map
