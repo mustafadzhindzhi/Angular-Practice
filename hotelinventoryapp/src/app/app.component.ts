@@ -7,7 +7,11 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  // template: `<h1>Hello World from inline template</h1>
+  // <p>Angular is Awesome</p>`,
+  
+  styleUrl: './app.component.css',
+  // styles:[`h1 {color:red}`]
 })
 export class AppComponent {
   title = 'hotelinventoryapp';
