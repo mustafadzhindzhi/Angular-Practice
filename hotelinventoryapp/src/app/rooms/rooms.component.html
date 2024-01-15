@@ -5,4 +5,10 @@
   <!-- document.getElementById('numberOfRooms').innerText = numberOfRooms; -->
 </div>
 
+{{rooms?.availableRooms ?? 'No rooms'}}
+
+<div *ngIf="rooms.availableRooms > 0">
+  Rooms List
+</div>
+
 <button (click)="toggle()">Hide</button>

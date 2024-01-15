@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Room } from './rooms.js';
 
 @Component({
   selector: 'hinv-rooms',
@@ -6,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
-  hotelName= 'Hilton Hotel';
+  hotelName = 'Hilton Hotel';
 
   numberOfRooms = 10;
-  
+
   hideRooms = false;
+
+  rooms: Room = {
+    totalRooms: 20,
+    availableRooms: 10,
+    bookedRooms: 5
+  }
 
   constructor() {
   }
