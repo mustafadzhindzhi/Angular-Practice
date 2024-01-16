@@ -26,7 +26,8 @@ export class RoomsComponent implements OnInit {
     price: 500,
     photos: 'https://aremorch.com/wp-content/uploads/2016/09/The-Details-That-Matter-Top-Things-Every-Luxury-Hotel-Room-Should-Have.png',
     checkingTime: new Date('15-January-2024'),
-    chekoutTime: new Date('16-January-2024')
+    chekoutTime: new Date('16-January-2024'),
+    rating: 4.5
   },
 {
   roomNumber: 2,
@@ -35,7 +36,8 @@ export class RoomsComponent implements OnInit {
   price: 1000,
   photos: 'https://aremorch.com/wp-content/uploads/2016/09/The-Details-That-Matter-Top-Things-Every-Luxury-Hotel-Room-Should-Have.png',
   checkingTime: new Date('15-January-2024'),
-  chekoutTime: new Date('16-January-2024')
+  chekoutTime: new Date('16-January-2024'),
+  rating: 3.44456,
 },
 {
   roomNumber: 3,
@@ -44,7 +46,8 @@ export class RoomsComponent implements OnInit {
   price: 1500,
   photos: 'https://aremorch.com/wp-content/uploads/2016/09/The-Details-That-Matter-Top-Things-Every-Luxury-Hotel-Room-Should-Have.png',
   checkingTime: new Date('15-January-2024'),
-  chekoutTime: new Date('16-January-2024')
+  chekoutTime: new Date('16-January-2024'),
+  rating: 2.6
 }
 ]
 
