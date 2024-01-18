@@ -63,5 +63,19 @@ export class RoomsComponent implements OnInit {
 
   selectRoom(room: RoomList) {
     this.selectedRoom = room;
+  };
+
+  addRoom() {
+    const room: RoomList = {
+      roomNumber: 4,
+      roomType: 'Deluxe Room',
+      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
+      price: 500,
+      photos: 'https://aremorch.com/wp-content/uploads/2016/09/The-Details-That-Matter-Top-Things-Every-Luxury-Hotel-Room-Should-Have.png',
+      checkingTime: new Date('18-January-2024'),
+      chekoutTime: new Date('19-January-2024'),
+      rating: 4.5
+    };
+    this.roomList.push(room);
   }
-}
+};
