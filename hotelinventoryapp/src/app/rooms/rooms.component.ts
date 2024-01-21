@@ -61,6 +61,7 @@ export class RoomsComponent implements OnInit, DoCheck {
   };
 
   ngDoCheck(): void {
+    console.log('on changes is called.');
     
   }
   toggle() {
