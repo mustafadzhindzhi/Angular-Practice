@@ -37,10 +37,11 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   constructor(@SkipSelf() private roomsService: RoomsService) {}
 
   ngOnInit(): void {
-    // this.roomList = this.roomsService.getRooms();   
-    this.roomsService.getRooms().subscribe((data: RoomList[]) => {
-      this.roomList = data;
-    });
+    console.log(this.roomsService.getRooms());
+       
+    // this.roomsService.getRooms().subscribe((data: RoomList[]) => {
+    //   this.roomList = data;
+    // });
   };
 
   ngDoCheck(): void {

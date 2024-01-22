@@ -9,7 +9,7 @@
   <!-- document.getElementById('numberOfRooms').innerText = numberOfRooms; -->
 </div>
 
-{{rooms?.availableRooms ?? "No rooms"}}
+{{rooms && rooms.availableRooms || "No rooms"}}
 
 <!-- {{roomList | json}} -->
 

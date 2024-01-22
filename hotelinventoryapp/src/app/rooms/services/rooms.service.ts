@@ -17,7 +17,7 @@ export class RoomsService {
     console.log('Rooms Service Initialized...');
   
   };
-  getRooms(): Observable<RoomList[]> {
-    return of(this.roomList); 
-  }
+ getRooms() {
+  return this.http.get('/api/rooms');
+ }
 };
