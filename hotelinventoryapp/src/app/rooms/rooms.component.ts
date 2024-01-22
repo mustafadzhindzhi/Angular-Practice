@@ -68,7 +68,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   addRoom() {
     const room: RoomList = {
-      roomNumber: 4,
+      roomNumber: '4',
       roomType: 'Deluxe Room',
       amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
       price: 500,
