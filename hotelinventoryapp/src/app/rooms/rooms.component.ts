@@ -2,6 +2,7 @@ import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList,
 import { Room, RoomList } from './rooms.js';
 import { HeaderComponent } from '../header/header.component.js';
 import { RoomsService } from './services/rooms.service.js';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'hinv-rooms',
@@ -26,7 +27,15 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   title = 'Room List';
 
-  roomList: RoomList[] = []
+  roomList: RoomList[] = [];
+
+  stream = new Observable(observer => {
+    observer.next('user1');
+    observer.next('user2');
+    observer.next('user3');
+    observer.complete();
+    // observer.error('error');
+  })
 
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
 
@@ -37,7 +46,16 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   constructor(@SkipSelf() private roomsService: RoomsService) {}
 
   ngOnInit(): void {
-    console.log(this.roomsService.getRooms());
+    this.stream.subscribe({
+      next: (value) => console.log(value),
+      complete: () => console.log('complete'),
+      error: (err) => console.log(err)
+    });
+    
+    this.stream.subscribe((data) => console.log(data))
+    this.roomsService.getRooms().subscribe(rooms => {
+      this.roomList = rooms;
+    });
        
     // this.roomsService.getRooms().subscribe((data: RoomList[]) => {
     //   this.roomList = data;
@@ -78,7 +96,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
       chekoutTime: new Date('19-January-2024'),
       rating: 4.5
     };
-    // this.roomList.push(room);
-    this.roomList = [...this.roomList, room];
+    this.roomList.push(room);
+    // this.roomList = [...this.roomList, room];
   };
 };
+
+
+

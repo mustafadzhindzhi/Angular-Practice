@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { RoomList } from '../rooms.js';
+import { Room, RoomList } from '../rooms.js';
 import { Observable, of } from 'rxjs'; 
 import { APP_SERVICE_CONFIG } from '../../AppConfig/appconfig.service.js';
 import { AppConfig } from '../../AppConfig/appconfig.interface.js';
@@ -18,6 +18,6 @@ export class RoomsService {
   
   };
  getRooms() {
-  return this.http.get('/api/rooms');
+  return this.http.get<RoomList[]>('/api/rooms');
  }
 };
