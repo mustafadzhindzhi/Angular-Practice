@@ -29,7 +29,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   roomList: RoomList[] = [];
 
-  stream = new Observable(observer => {
+  stream = new Observable<string>(observer => {
     observer.next('user1');
     observer.next('user2');
     observer.next('user3');
@@ -51,7 +51,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
       complete: () => console.log('complete'),
       error: (err) => console.log(err)
     });
-    
+
     this.stream.subscribe((data) => console.log(data))
     this.roomsService.getRooms().subscribe(rooms => {
       this.roomList = rooms;
@@ -96,9 +96,29 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
       chekoutTime: new Date('19-January-2024'),
       rating: 4.5
     };
-    this.roomList.push(room);
+    // this.roomList.push(room);
     // this.roomList = [...this.roomList, room];
+    this.roomsService.addRoom(room).subscribe((data) => {
+      this.roomList = data;
+    })
   };
+
+  editRoom () {
+    const room: RoomList = {
+      roomNumber: '3',
+      roomType: 'Deluxe Room',
+      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
+      price: 500,
+      photos: 'https://aremorch.com/wp-content/uploads/2016/09/The-Details-That-Matter-Top-Things-Every-Luxury-Hotel-Room-Should-Have.png',
+      checkingTime: new Date('18-January-2024'),
+      chekoutTime: new Date('19-January-2024'),
+      rating: 4.5
+    };
+
+    this.roomsService.editRoom(room).subscribe((data) => {
+      this.roomList = data;
+    })
+  }
 };
 
 
