@@ -2,7 +2,7 @@ import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList,
 import { Room, RoomList } from './rooms.js';
 import { HeaderComponent } from '../header/header.component.js';
 import { RoomsService } from './services/rooms.service.js';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpEventType } from '@angular/common/http/index.js';
 
 @Component({
@@ -46,6 +46,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   error: string = '';
   totalBytes = 0;
 
+  subscription !: Subscription;
+
+  rooms$ = this.roomsService.getRooms$;
+
   constructor(@SkipSelf() private roomsService: RoomsService) { }
 
   ngOnInit(): void {
@@ -79,9 +83,9 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     });
 
     this.stream.subscribe((data) => console.log(data))
-    this.roomsService.getRooms$.subscribe((rooms) => {
-      this.roomList = rooms;
-    });
+    // this.roomsService.getRooms$.subscribe((rooms) => {
+    //   this.roomList = rooms;
+    // });
 
     // this.roomsService.getRooms().subscribe((data: RoomList[]) => {
     //   this.roomList = data;
@@ -150,6 +154,12 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     this.roomsService.deleteRoom('3').subscribe((data) => {
       this.roomList = data;
     })
+  }
+
+  ngOnDestroy () {
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 };
 
