@@ -3,7 +3,7 @@ import { Room, RoomList } from '../rooms.js';
 import { Observable, of } from 'rxjs'; 
 import { APP_SERVICE_CONFIG } from '../../AppConfig/appconfig.service.js';
 import { AppConfig } from '../../AppConfig/appconfig.interface.js';
-import { HttpClient } from '@angular/common/http/index.js';
+import { HttpClient, HttpRequest } from '@angular/common/http/index.js';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,16 @@ export class RoomsService {
 
  editRoom(room: RoomList) {
   return this.http.put<RoomList[]>(`/api/rooms${room.roomNumber}`, room);
+ };
+
+ deleteRoom (id: string) {
+  return this.http.delete<RoomList[]>(`/api/rooms/${id}`)
+ };
+
+ getPhotos () {
+  const request = new HttpRequest('GET', `https://jsonplaceholder.typicode.com/photos`, {
+    reportProgress: true,
+  });
+  return this.http.request(request);
  }
 };
