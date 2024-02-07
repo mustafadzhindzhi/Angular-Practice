@@ -79,7 +79,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     });
 
     this.stream.subscribe((data) => console.log(data))
-    this.roomsService.getRooms().subscribe(rooms => {
+    this.roomsService.getRooms$.subscribe((rooms) => {
       this.roomList = rooms;
     });
 

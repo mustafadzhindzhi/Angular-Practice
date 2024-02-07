@@ -5,12 +5,13 @@ import { RoomsService } from '../rooms/services/rooms.service';
   selector: 'hinv-container',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.css'],
+  //providers:[RoomsService]
 })
 export class ContainerComponent implements OnInit, AfterContentInit {
 
   @ContentChild(EmployeeComponent) employee!: EmployeeComponent;
 
-  constructor(private roomsService: RoomsService) { }
+  constructor() { }
 
   ngOnInit(): void {
 

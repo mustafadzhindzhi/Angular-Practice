@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Room, RoomList } from '../rooms.js';
-import { Observable, of } from 'rxjs'; 
+import { Observable, of, shareReplay } from 'rxjs'; 
 import { APP_SERVICE_CONFIG } from '../../AppConfig/appconfig.service.js';
 import { AppConfig } from '../../AppConfig/appconfig.interface.js';
 import { HttpClient, HttpRequest } from '@angular/common/http/index.js';
@@ -10,6 +10,10 @@ import { HttpClient, HttpRequest } from '@angular/common/http/index.js';
 })
 export class RoomsService {
   roomList: RoomList[] = [];
+
+  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(
+    shareReplay(1)
+  );
 
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig,
   private http: HttpClient ) { 
