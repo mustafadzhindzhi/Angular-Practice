@@ -22,6 +22,11 @@
   <button (click)="addRoom()">Add Room</button>
 </div>
 
+<h1>
+  <!-- {{getError$ | async}} -->
+  Nuber of Romms: {{roomsCount$ | async}}
+</h1>
+
 <div *ngIf="rooms$ | async as rooms">
   <hinv-rooms-list [rooms]="rooms" [title]="title"
   (selectedRoom)="selectRoom($event)"></hinv-rooms-list>

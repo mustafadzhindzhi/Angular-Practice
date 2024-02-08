@@ -2,7 +2,7 @@ import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList,
 import { Room, RoomList } from './rooms.js';
 import { HeaderComponent } from '../header/header.component.js';
 import { RoomsService } from './services/rooms.service.js';
-import { Observable, Subject, Subscription, catchError } from 'rxjs';
+import { Observable, Subject, Subscription, catchError, map } from 'rxjs';
 import { HttpEventType } from '@angular/common/http/index.js';
 
 @Component({
@@ -48,14 +48,21 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   subscription !: Subscription;
 
-  error$ !: Subject<string>;
+  error$ = new Subject<string>();
+
+  getError$ = this.error$.asObservable();
 
   rooms$ = this.roomsService.getRooms$.pipe(
    catchError((err) => {
-    console.log(err);
+    // console.log(err);
+    this.error$.next(err.message);
     return ([]);
    })
   );
+
+  roomsCount$ = this.roomsService.getRooms$.pipe(
+    map((room) => room.length)
+  )
 
   constructor(@SkipSelf() private roomsService: RoomsService) { }
 

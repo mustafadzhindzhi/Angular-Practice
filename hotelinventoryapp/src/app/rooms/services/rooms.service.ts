@@ -3,15 +3,17 @@ import { Room, RoomList } from '../rooms.js';
 import { Observable, of, shareReplay } from 'rxjs'; 
 import { APP_SERVICE_CONFIG } from '../../AppConfig/appconfig.service.js';
 import { AppConfig } from '../../AppConfig/appconfig.interface.js';
-import { HttpClient, HttpRequest } from '@angular/common/http/index.js';
+import { HttpClient, HttpHandler, HttpHeaders, HttpRequest } from '@angular/common/http/index.js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomsService {
   roomList: RoomList[] = [];
-
-  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(
+  headers = new HttpHeaders({'token': '1234564535sdg'});
+  getRooms$ = this.http.get<RoomList[]>('/api/rooms', {
+    headers: this.headers
+  }).pipe(
     shareReplay(1)
   );
 
@@ -26,7 +28,9 @@ export class RoomsService {
  };
 
  addRoom(room :RoomList) {
-  return this.http.post<RoomList[]>('/api/rooms', room);
+  return this.http.post<RoomList[]>('/api/rooms', room, {
+    headers:this.headers,
+  });
  }
 
  editRoom(room: RoomList) {
