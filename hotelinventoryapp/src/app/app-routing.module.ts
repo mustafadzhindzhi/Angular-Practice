@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmployeeComponent } from './employee/employee.component.js';
+import { RoomsComponent } from './rooms/rooms.component.js';
 
 const routes: Routes = [
-  // Define your routes here
   // Example: { path: 'some-path', component: SomeComponent },
+  {path: 'employee', component: EmployeeComponent},
+  {path: 'rooms', component: RoomsComponent},
+  {path: '', redirectTo:'/rooms', pathMatch:'full'},
 ];
 
 @NgModule({
