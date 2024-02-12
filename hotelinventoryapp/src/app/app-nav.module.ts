@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppNavComponent } from './app-nav/app-nav.component.js';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AppNavComponent } from './app-nav/app-nav.component.js';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatToolbarModule,
     MatListModule,
     MatIconModule,

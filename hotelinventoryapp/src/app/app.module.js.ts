@@ -10,29 +10,30 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 
-import { RoomsComponent } from "./rooms/rooms.component";
-import { RoomsListComponent } from "./rooms/rooms-list/rooms-list.component";
-import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./header/header.component";
-import { EmployeeComponent } from "./employee/employee.component";
-import { ContainerComponent } from "./container/container.component";
-import { RoomsService } from "./rooms/services/rooms.service";
-import { APP_CONFIG, APP_SERVICE_CONFIG } from "./AppConfig/appconfig.service";
+import { AppNavModule } from "./app-nav.module";
 import { RequestInterceptor } from "./request.interceptor";
 import { InitService } from "./init.service";
-import { AppNavModule } from "./app-nav.module.js";
 
-function initFactory(InitService: InitService) {
-  return () => InitService.init();
+import { AppComponent } from "./app.component";
+import { HeaderComponent } from "./header/header.component";
+import { ContainerComponent } from "./container/container.component";
+import { RoomsComponent } from "./rooms/rooms.component";
+import { RoomsListComponent } from "./rooms/rooms-list/rooms-list.component";
+import { EmployeeComponent } from "./employee/employee.component";
+
+import { APP_CONFIG, APP_SERVICE_CONFIG } from "./AppConfig/appconfig.service";
+
+function initFactory(initService: InitService) {
+  return () => initService.init();
 }
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoomsComponent,
-    RoomsListComponent,
     HeaderComponent,
     ContainerComponent,
+    RoomsComponent,
+    RoomsListComponent,
     EmployeeComponent,
   ],
   imports: [
@@ -45,7 +46,7 @@ function initFactory(InitService: InitService) {
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    AppNavModule, // Include AppNavModule
+    AppNavModule,
   ],
   providers: [
     {
