@@ -22,6 +22,7 @@ import { RoomsListComponent } from "./rooms/rooms-list/rooms-list.component";
 import { EmployeeComponent } from "./employee/employee.component";
 
 import { APP_CONFIG, APP_SERVICE_CONFIG } from "./AppConfig/appconfig.service";
+import { FormsModule } from "@angular/forms";
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -47,6 +48,7 @@ function initFactory(initService: InitService) {
     MatListModule,
     MatIconModule,
     AppNavModule,
+    FormsModule
   ],
   providers: [
     {
